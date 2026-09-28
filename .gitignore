@@ -1,0 +1,16 @@
+**/bin/
+**/obj/
+.vs/
+.idea/
+*.user
+*.suo
+artifacts/
+TestResults/
+# Bring-your-own proprietary native component and OCR inputs/outputs.
+native/
+samples/data/
+*.dll
+*.tflite
+*.binarypb
+*.nupkg
+*.snupkg
