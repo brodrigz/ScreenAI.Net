@@ -1,10 +1,11 @@
 # ScreenAI.Net
+A **.NET Standard 2.1** wrapper for Chrome's local Screen AI OCR engine, thread-safe with disposable workers.
 
-A **.NET Standard 2.1** wrapper for Chrome's local Screen AI OCR engine, with independently disposable workers.
+Executes Chrome's Screen AI managed code directly, no need for a browser, chromedriver or cloud services.
 
-Accepts BGRA32 image buffers and returns recognized text with coordinates and confidence scores. Image decoding and PDF rendering aren't included.
+Accepts image buffers and returns recognized text with coordinates and confidence scores. Image decoding and PDF rendering aren't included.
 
-**Windows x64 only for now.** The library targets .NET Standard 2.1; the worker runs on .NET 8. No .NET Framework support.
+**Currently only Windows x64 support (chrome_screen_ai.dll)** 
 
 ## Setup
 
@@ -85,11 +86,10 @@ Reuse the worker across calls. Don't modify or return the pixel buffer to a pool
 
 Workers start on first use. Active OCR cancellation or a timeout stops the child; the next request can start a fresh one. Failed requests aren't retried automatically.
 
-For parallel OCR, use `ScreenAiWorkerPool` ([example](docs/usage.md#concurrency-cancellation-and-recovery)). Each worker loads its own models, so start small.
+For parallel OCR, use `ScreenAiWorkerPool` ([example](docs/usage.md#concurrency-cancellation-and-recovery)). Each worker loads its own models.
 
 ## More
 
 - [Usage guide](docs/usage.md): direct calls, configuration, deployment, and sample commands.
 - [Native interop notes](docs/native-interop.md): ABI details and implementation limits.
 - [clv-locro](https://github.com/sergiocorreia/clv-locro): the Python reference this started from.
-- [Third-party notices](THIRD-PARTY-NOTICES.md). This wrapper is unofficial; Chrome's binaries have their own terms.

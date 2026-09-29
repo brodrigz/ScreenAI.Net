@@ -17,6 +17,5 @@
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.30.2" />
     <None Include="../../README.md" Pack="true" PackagePath="/" />
-    <None Include="../../THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 </Project>
